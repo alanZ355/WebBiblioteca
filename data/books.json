@@ -30,16 +30,6 @@
     "featured": true
   },
   {
-    "id": 4,
-    "title": "Breves respuestas a las grandes preguntas",
-    "author": "Stephen Hawking",
-    "category": "Ciencia",
-    "price": 16.75,
-    "format": "Tapa blanda",
-    "cover": "https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=600&q=85",
-    "featured": false
-  },
-  {
     "id": 7,
     "title": "fulanito",
     "author": "el amor de la vida de mi amor",
