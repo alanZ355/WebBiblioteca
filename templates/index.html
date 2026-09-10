@@ -27,7 +27,7 @@
 	<main>
 		<section class="hero">
 			<div class="hero-copy">
-				<p class="eyebrow">Librería independiente · desde 2012</p>
+				<p class="eyebrow">Librería Independiente · desde 2026</p>
 				<h1>Historias que<br><em>se quedan.</em></h1>
 				<p class="hero-text">Una selección cuidada de libros para leer despacio, regalar con intención y volver a ellos cuando haga falta.</p>
 				<a class="primary-link" href="#catalogo">Explorar libros <span>↘</span></a>
@@ -63,7 +63,7 @@
 						<p class="book-category">{{ book.category }}</p>
 						<h3>{{ book.title }}</h3>
 						<p class="author">{{ book.author }}</p>
-						<div class="book-bottom"><span class="price">€{{ '%.2f'|format(book.price) }}</span><button class="add-button" type="button" data-id="{{ book.id }}" aria-label="Añadir {{ book.title }} al carrito">+</button></div>
+						<div class="book-bottom"><span class="price">${{ '%.2f'|format(book.price) }}</span><button class="add-button" type="button" data-id="{{ book.id }}" aria-label="Añadir {{ book.title }} al carrito">+</button></div>
 					</div>
 				</article>
 				{% endfor %}
@@ -83,7 +83,7 @@
 	<aside class="cart-panel" id="cart-panel" aria-label="Carrito de compra" aria-hidden="true">
 		<div class="cart-header"><h2>Tu carrito</h2><button id="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
 		<div id="cart-items"><p class="cart-empty">Tu carrito está esperando una historia.</p></div>
-		<div class="cart-footer"><div><span>Total</span><strong id="cart-total">€0.00</strong></div><button class="checkout-button" type="button">Continuar compra</button></div>
+		<div class="cart-footer"><div><span>Total</span><strong id="cart-total">$0.00</strong></div><button class="checkout-button" type="button">Continuar compra</button></div>
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	<script>
@@ -114,10 +114,10 @@
 			if (!items.length) {
 				cartItems.innerHTML = '<p class="cart-empty">Tu carrito está esperando una historia.</p>';
 			} else {
-				cartItems.innerHTML = items.map(item => `<div class="cart-item"><img src="${item.book.cover}" alt=""><div><strong>${item.book.title}</strong><small>${item.quantity} × €${item.book.price.toFixed(2)}</small></div><button type="button" data-remove="${item.book.id}" aria-label="Quitar ${item.book.title}">×</button></div>`).join('');
+				cartItems.innerHTML = items.map(item => `<div class="cart-item"><img src="${item.book.cover}" alt=""><div><strong>${item.book.title}</strong><small>${item.quantity} × $${item.book.price.toFixed(2)}</small></div><button type="button" data-remove="${item.book.id}" aria-label="Quitar ${item.book.title}">×</button></div>`).join('');
 			}
 
-			document.querySelector('#cart-total').textContent = `€${cartData.total.toFixed(2)}`;
+			document.querySelector('#cart-total').textContent = `$${cartData.total.toFixed(2)}`;
 		}
 
 		// Pequeño helper para no repetir la configuración de fetch en cada

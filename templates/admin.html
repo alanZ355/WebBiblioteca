@@ -36,7 +36,7 @@
 				<input type="text" id="category" name="category" placeholder="Ej: Novela, Historia, Ciencia">
 			</div>
 			<div class="admin-field">
-				<label for="price">Precio (€) *</label>
+				<label for="price">Precio ($) *</label>
 				<input type="number" id="price" name="price" step="0.01" min="0" required>
 			</div>
 			<div class="admin-field">
@@ -70,7 +70,7 @@
 					<td>{{ book.title }}</td>
 					<td>{{ book.author }}</td>
 					<td>{{ book.category }}</td>
-					<td>€{{ '%.2f'|format(book.price) }}</td>
+					<td>${{ '%.2f'|format(book.price) }}</td>
 					<td>
 						<!-- Cada libro tiene su propio formulario de borrado
 						     (un botón por fila) que llama a

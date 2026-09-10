@@ -40,7 +40,7 @@ h1 em, h2 em { color: var(--orange); font-style: italic; }
 .book-stack { position: absolute; transform: rotate(-18deg); }
 .book-stack-back { background: #df704b; border: 7px solid #f1e4c1; bottom: 32px; height: 194px; left: 26%; width: 330px; }
 .book-stack-front { background: #253b35; bottom: 3px; box-shadow: 19px 14px 0 #ece6d6; height: 218px; left: 34%; width: 300px; }
-.hero-art p { color: #eee6d4; font-family: 'Playfair Display', serif; font-size: 43px; line-height: .83; margin: 0; position: absolute; right: 18%; top: 42%; transform: rotate(-18deg); }
+.hero-art p { color: #f0d495; font-family: 'Playfair Display', serif; font-size: 43px; line-height: .83; margin: 0; position: absolute; right: 18%; top: 42%; transform: rotate(-18deg); }
 .catalog-section { margin: 0 auto; max-width: 1260px; padding: 104px 36px 120px; }
 .section-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 42px; }
 h2 { font-size: clamp(36px, 4vw, 55px); }

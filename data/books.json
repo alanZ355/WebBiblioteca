@@ -40,23 +40,13 @@
     "featured": false
   },
   {
-    "id": 5,
-    "title": "El camino del artista",
-    "author": "Julia Cameron",
-    "category": "Crecimiento",
-    "price": 19.95,
-    "format": "Tapa blanda",
-    "cover": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=600&q=85",
-    "featured": false
-  },
-  {
-    "id": 6,
-    "title": "Cien años de soledad",
-    "author": "Gabriel García Márquez",
-    "category": "Clásicos",
-    "price": 17.8,
-    "format": "Edición especial",
-    "cover": "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=600&q=85",
+    "id": 7,
+    "title": "fulanito",
+    "author": "el amor de la vida de mi amor",
+    "category": "historia de amor",
+    "price": 1000000.0,
+    "format": "tapa dura",
+    "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=85",
     "featured": false
   }
 ]
