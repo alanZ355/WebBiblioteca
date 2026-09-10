@@ -16,6 +16,8 @@
 			<a href="#catalogo">Catálogo</a>
 			<a href="#recomendados">Recomendados</a>
 			<a href="#nosotros">La librería</a>
+			<!-- Enlace nuevo al panel de administración, para agregar libros sin tocar código -->
+			<a href="{{ url_for('admin_panel') }}">Admin</a>
 		</nav>
 		<button class="cart-button" id="cart-button" type="button" aria-label="Abrir carrito">
 			<span class="bag-icon">◌</span> Carrito <b id="cart-count">0</b>
@@ -85,38 +87,79 @@
 	</aside>
 	<div class="overlay" id="overlay"></div>
 	<script>
+		// `books` sigue viniendo embebido para el buscador/filtro (no necesita
+		// pedirlo por separado). `initialCart` es el carrito que ya estaba
+		// guardado en la sesión del usuario (si venía de antes) — así el
+		// carrito se ve correcto apenas carga la página, sin esperar un fetch.
 		const books = {{ books|tojson }};
-		const cart = [];
+		const initialCart = {{ cart|tojson }};
+
 		const cartPanel = document.querySelector('#cart-panel');
 		const overlay = document.querySelector('#overlay');
 		const cartItems = document.querySelector('#cart-items');
 
-		function renderCart() {
-			const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+		// -----------------------------------------------------------------
+		// Carrito: ahora en vez de guardar el estado solo en una variable de
+		// JS, cada acción (agregar/quitar) llama al backend por fetch, y el
+		// backend contesta con el carrito actualizado, que es lo que se
+		// pinta en pantalla. Así el carrito queda guardado del lado del
+		// servidor (en la sesión) y sobrevive a un refresh de página.
+		// -----------------------------------------------------------------
+
+		function renderCart(cartData) {
+			const items = cartData.items;
+			const count = items.reduce((sum, item) => sum + item.quantity, 0);
 			document.querySelector('#cart-count').textContent = count;
-			if (!cart.length) {
+
+			if (!items.length) {
 				cartItems.innerHTML = '<p class="cart-empty">Tu carrito está esperando una historia.</p>';
 			} else {
-				cartItems.innerHTML = cart.map(item => `<div class="cart-item"><img src="${item.book.cover}" alt=""><div><strong>${item.book.title}</strong><small>${item.quantity} × €${item.book.price.toFixed(2)}</small></div><button type="button" data-remove="${item.book.id}" aria-label="Quitar ${item.book.title}">×</button></div>`).join('');
+				cartItems.innerHTML = items.map(item => `<div class="cart-item"><img src="${item.book.cover}" alt=""><div><strong>${item.book.title}</strong><small>${item.quantity} × €${item.book.price.toFixed(2)}</small></div><button type="button" data-remove="${item.book.id}" aria-label="Quitar ${item.book.title}">×</button></div>`).join('');
 			}
-			const total = cart.reduce((sum, item) => sum + item.book.price * item.quantity, 0);
-			document.querySelector('#cart-total').textContent = `€${total.toFixed(2)}`;
+
+			document.querySelector('#cart-total').textContent = `€${cartData.total.toFixed(2)}`;
+		}
+
+		// Pequeño helper para no repetir la configuración de fetch en cada
+		// llamada. Manda el id del libro como JSON al backend y devuelve
+		// la respuesta ya parseada.
+		async function postCart(endpoint, bookId) {
+			const response = await fetch(endpoint, {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ id: bookId }),
+			});
+			return response.json();
 		}
 
 		function openCart() { cartPanel.classList.add('is-open'); overlay.classList.add('is-visible'); cartPanel.setAttribute('aria-hidden', 'false'); }
 		function closeCart() { cartPanel.classList.remove('is-open'); overlay.classList.remove('is-visible'); cartPanel.setAttribute('aria-hidden', 'true'); }
-		document.querySelectorAll('.add-button').forEach(button => button.addEventListener('click', () => {
-			const book = books.find(item => item.id === Number(button.dataset.id));
-			const existing = cart.find(item => item.book.id === book.id);
-			existing ? existing.quantity++ : cart.push({ book, quantity: 1 });
-			renderCart();
+
+		document.querySelectorAll('.add-button').forEach(button => button.addEventListener('click', async () => {
+			const bookId = Number(button.dataset.id);
+			const cartData = await postCart('/api/cart/add', bookId);
+			renderCart(cartData);
 			openCart();
 		}));
-		cartItems.addEventListener('click', event => { if (event.target.dataset.remove) { const item = cart.find(item => item.book.id === Number(event.target.dataset.remove)); item.quantity--; if (!item.quantity) cart.splice(cart.indexOf(item), 1); renderCart(); } });
+
+		cartItems.addEventListener('click', async event => {
+			if (!event.target.dataset.remove) return;
+			const bookId = Number(event.target.dataset.remove);
+			const cartData = await postCart('/api/cart/remove', bookId);
+			renderCart(cartData);
+		});
+
 		document.querySelector('#cart-button').addEventListener('click', openCart);
 		document.querySelector('#close-cart').addEventListener('click', closeCart);
 		overlay.addEventListener('click', closeCart);
 
+		// Pintamos el carrito con lo que ya había en la sesión al cargar la página.
+		renderCart(initialCart);
+
+		// -----------------------------------------------------------------
+		// Buscador y filtro por categoría (sin cambios de comportamiento,
+		// solo se mantiene igual que antes).
+		// -----------------------------------------------------------------
 		const cards = [...document.querySelectorAll('.book-card')];
 		const search = document.querySelector('#search');
 		const menu = document.querySelector('#filter-menu');

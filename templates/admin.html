@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Verso | Panel de administración</title>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="admin-body">
+	<header class="site-header">
+		<a class="brand" href="/" aria-label="Verso, inicio"><span>V</span>erso</a>
+		<nav class="main-nav" aria-label="Navegación principal">
+			<a href="/">Ver sitio</a>
+		</nav>
+	</header>
+
+	<main class="admin-main">
+		<h1>Panel de administración</h1>
+		<p class="admin-subtitle">Acá podés agregar libros nuevos al catálogo sin tocar código. Se guardan directo en <code>data/books.json</code>.</p>
+
+		<!-- Formulario para cargar un libro nuevo. Al enviarse, hace un POST
+		     a /admin/books, que es la ruta en app.py que procesa estos datos
+		     y los agrega al archivo JSON. -->
+		<form class="admin-form" action="{{ url_for('admin_add_book') }}" method="post">
+			<div class="admin-field">
+				<label for="title">Título *</label>
+				<input type="text" id="title" name="title" required>
+			</div>
+			<div class="admin-field">
+				<label for="author">Autor *</label>
+				<input type="text" id="author" name="author" required>
+			</div>
+			<div class="admin-field">
+				<label for="category">Categoría</label>
+				<input type="text" id="category" name="category" placeholder="Ej: Novela, Historia, Ciencia">
+			</div>
+			<div class="admin-field">
+				<label for="price">Precio (€) *</label>
+				<input type="number" id="price" name="price" step="0.01" min="0" required>
+			</div>
+			<div class="admin-field">
+				<label for="format">Formato</label>
+				<input type="text" id="format" name="format" placeholder="Ej: Tapa blanda, Tapa dura">
+			</div>
+			<div class="admin-field admin-field-wide">
+				<label for="cover">URL de portada</label>
+				<input type="url" id="cover" name="cover" placeholder="https://...">
+			</div>
+			<div class="admin-field admin-checkbox">
+				<label><input type="checkbox" name="featured"> Marcar como "Selección Verso"</label>
+			</div>
+			<button class="admin-submit" type="submit">Agregar libro</button>
+		</form>
+
+		<h2 class="admin-list-title">Libros actuales ({{ books|length }})</h2>
+		<table class="admin-table">
+			<thead>
+				<tr>
+					<th>Título</th>
+					<th>Autor</th>
+					<th>Categoría</th>
+					<th>Precio</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for book in books %}
+				<tr>
+					<td>{{ book.title }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.category }}</td>
+					<td>€{{ '%.2f'|format(book.price) }}</td>
+					<td>
+						<!-- Cada libro tiene su propio formulario de borrado
+						     (un botón por fila) que llama a
+						     /admin/books/<id>/delete por POST. -->
+						<form action="{{ url_for('admin_delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('¿Borrar «' + {{ book.title|tojson }} + '»?');">
+							<button class="admin-delete" type="submit">Borrar</button>
+						</form>
+					</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</main>
+</body>
+</html>

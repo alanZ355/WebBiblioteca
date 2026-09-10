@@ -117,3 +117,29 @@ h2 { font-size: clamp(36px, 4vw, 55px); }
 	.about { align-items: start; display: block; padding: 65px 20px; }
 	.about p:last-child { font-size: 23px; }
 }
+
+/* ---------------------------------------------------------------------
+   Panel de administración (/admin)
+   Estilos nuevos, reutilizando las mismas variables de color y
+   tipografía que el resto del sitio para que se sienta parte de "Verso".
+--------------------------------------------------------------------- */
+.admin-main { margin: 0 auto; max-width: 900px; padding: 40px 36px 100px; }
+.admin-main h1 { font-size: 40px; margin-bottom: 10px; }
+.admin-subtitle { color: var(--muted); font-size: 14px; margin-bottom: 34px; }
+.admin-subtitle code { background: var(--cream); border-radius: 4px; padding: 2px 6px; }
+
+.admin-form { background: var(--cream); border-radius: 14px; display: grid; gap: 18px; grid-template-columns: 1fr 1fr; padding: 28px; }
+.admin-field { display: flex; flex-direction: column; gap: 6px; }
+.admin-field-wide { grid-column: 1 / -1; }
+.admin-field label { color: var(--muted); font-size: 12px; font-weight: 500; }
+.admin-field input { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+.admin-checkbox { align-items: center; flex-direction: row; gap: 8px; }
+.admin-checkbox label { align-items: center; display: flex; gap: 8px; }
+.admin-submit { background: var(--orange); border-radius: 8px; color: white; font-weight: 600; grid-column: 1 / -1; justify-self: start; padding: 12px 26px; }
+
+.admin-list-title { font-size: 22px; margin: 46px 0 18px; }
+.admin-table { border-collapse: collapse; width: 100%; }
+.admin-table th, .admin-table td { border-bottom: 1px solid var(--line); padding: 10px 8px; text-align: left; }
+.admin-table th { color: var(--muted); font-size: 11px; text-transform: uppercase; letter-spacing: .5px; }
+.admin-delete { background: transparent; border: 1px solid var(--line); border-radius: 6px; color: var(--ink); font-size: 12px; padding: 6px 12px; }
+.admin-delete:hover { background: var(--orange); border-color: var(--orange); color: white; }

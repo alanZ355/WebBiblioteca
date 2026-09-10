@@ -1,0 +1,15 @@
+# Bytecode compilado por Python — se regenera solo, no debe versionarse.
+__pycache__/
+*.pyc
+
+# Entornos virtuales típicos (por si en algún momento creás uno acá).
+venv/
+.venv/
+env/
+
+# Archivos de configuración local / variables de entorno con secretos.
+.env
+
+# Archivos de editor/IDE.
+.vscode/
+.idea/
