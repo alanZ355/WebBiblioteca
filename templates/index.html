@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Verso | Librería independiente</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="/" aria-label="Verso, inicio"><span>V</span>erso</a>
+		<nav class="main-nav" aria-label="Navegación principal">
+			<a href="#catalogo">Catálogo</a>
+			<a href="#recomendados">Recomendados</a>
+			<a href="#nosotros">La librería</a>
+		</nav>
+		<button class="cart-button" id="cart-button" type="button" aria-label="Abrir carrito">
+			<span class="bag-icon">◌</span> Carrito <b id="cart-count">0</b>
+		</button>
+	</header>
+
+	<main>
+		<section class="hero">
+			<div class="hero-copy">
+				<p class="eyebrow">Librería independiente · desde 2012</p>
+				<h1>Historias que<br><em>se quedan.</em></h1>
+				<p class="hero-text">Una selección cuidada de libros para leer despacio, regalar con intención y volver a ellos cuando haga falta.</p>
+				<a class="primary-link" href="#catalogo">Explorar libros <span>↘</span></a>
+			</div>
+			<div class="hero-art" aria-hidden="true">
+				<div class="sun"></div>
+				<div class="book-stack book-stack-back"></div>
+				<div class="book-stack book-stack-front"></div>
+				<p>lee<br>sin<br>prisa</p>
+			</div>
+		</section>
+
+		<section class="catalog-section" id="catalogo">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">Nuestra selección</p>
+					<h2>Encuentra tu próxima lectura</h2>
+				</div>
+				<div class="catalog-tools">
+					<label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Buscar título o autor" aria-label="Buscar título o autor"></label>
+					<button class="filter-button" id="filter-button" type="button">Todas las categorías <span>⌄</span></button>
+					<div class="filter-menu" id="filter-menu" hidden></div>
+				</div>
+			</div>
+			<div class="book-grid" id="book-grid">
+				{% for book in books %}
+				<article class="book-card" data-title="{{ book.title|lower }}" data-author="{{ book.author|lower }}" data-category="{{ book.category }}">
+					<div class="cover-wrap">
+						<img src="{{ book.cover }}" alt="Portada de {{ book.title }}" loading="lazy">
+						{% if book.featured %}<span class="tag">Selección Verso</span>{% endif %}
+					</div>
+					<div class="book-info">
+						<p class="book-category">{{ book.category }}</p>
+						<h3>{{ book.title }}</h3>
+						<p class="author">{{ book.author }}</p>
+						<div class="book-bottom"><span class="price">€{{ '%.2f'|format(book.price) }}</span><button class="add-button" type="button" data-id="{{ book.id }}" aria-label="Añadir {{ book.title }} al carrito">+</button></div>
+					</div>
+				</article>
+				{% endfor %}
+			</div>
+			<p class="empty-state" id="empty-state" hidden>No encontramos libros con esa búsqueda.</p>
+		</section>
+
+		<section class="recommendation" id="recomendados">
+			<div><p class="eyebrow">Recomendación del mes</p><h2>Leer también es<br><em>hacer espacio.</em></h2></div>
+			<p>Elige una historia, apaga el ruido y deja que el mundo espere unas páginas.</p>
+			<a class="arrow-link" href="#catalogo" aria-label="Ver recomendaciones">→</a>
+		</section>
+
+		<section class="about" id="nosotros"><p class="eyebrow">Verso</p><p>Libros elegidos por personas que todavía creen que una buena historia puede cambiar una tarde.</p></section>
+	</main>
+
+	<aside class="cart-panel" id="cart-panel" aria-label="Carrito de compra" aria-hidden="true">
+		<div class="cart-header"><h2>Tu carrito</h2><button id="close-cart" type="button" aria-label="Cerrar carrito">×</button></div>
+		<div id="cart-items"><p class="cart-empty">Tu carrito está esperando una historia.</p></div>
+		<div class="cart-footer"><div><span>Total</span><strong id="cart-total">€0.00</strong></div><button class="checkout-button" type="button">Continuar compra</button></div>
+	</aside>
+	<div class="overlay" id="overlay"></div>
+	<script>
+		const books = {{ books|tojson }};
+		const cart = [];
+		const cartPanel = document.querySelector('#cart-panel');
+		const overlay = document.querySelector('#overlay');
+		const cartItems = document.querySelector('#cart-items');
+
+		function renderCart() {
+			const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+			document.querySelector('#cart-count').textContent = count;
+			if (!cart.length) {
+				cartItems.innerHTML = '<p class="cart-empty">Tu carrito está esperando una historia.</p>';
+			} else {
+				cartItems.innerHTML = cart.map(item => `<div class="cart-item"><img src="${item.book.cover}" alt=""><div><strong>${item.book.title}</strong><small>${item.quantity} × €${item.book.price.toFixed(2)}</small></div><button type="button" data-remove="${item.book.id}" aria-label="Quitar ${item.book.title}">×</button></div>`).join('');
+			}
+			const total = cart.reduce((sum, item) => sum + item.book.price * item.quantity, 0);
+			document.querySelector('#cart-total').textContent = `€${total.toFixed(2)}`;
+		}
+
+		function openCart() { cartPanel.classList.add('is-open'); overlay.classList.add('is-visible'); cartPanel.setAttribute('aria-hidden', 'false'); }
+		function closeCart() { cartPanel.classList.remove('is-open'); overlay.classList.remove('is-visible'); cartPanel.setAttribute('aria-hidden', 'true'); }
+		document.querySelectorAll('.add-button').forEach(button => button.addEventListener('click', () => {
+			const book = books.find(item => item.id === Number(button.dataset.id));
+			const existing = cart.find(item => item.book.id === book.id);
+			existing ? existing.quantity++ : cart.push({ book, quantity: 1 });
+			renderCart();
+			openCart();
+		}));
+		cartItems.addEventListener('click', event => { if (event.target.dataset.remove) { const item = cart.find(item => item.book.id === Number(event.target.dataset.remove)); item.quantity--; if (!item.quantity) cart.splice(cart.indexOf(item), 1); renderCart(); } });
+		document.querySelector('#cart-button').addEventListener('click', openCart);
+		document.querySelector('#close-cart').addEventListener('click', closeCart);
+		overlay.addEventListener('click', closeCart);
+
+		const cards = [...document.querySelectorAll('.book-card')];
+		const search = document.querySelector('#search');
+		const menu = document.querySelector('#filter-menu');
+		const categories = ['Todas las categorías', ...new Set(books.map(book => book.category))];
+		let activeCategory = categories[0];
+		menu.innerHTML = categories.map(category => `<button type="button" data-category="${category}">${category}</button>`).join('');
+		document.querySelector('#filter-button').addEventListener('click', () => { menu.hidden = !menu.hidden; });
+		menu.addEventListener('click', event => { if (!event.target.dataset.category) return; activeCategory = event.target.dataset.category; document.querySelector('#filter-button').innerHTML = `${activeCategory} <span>⌄</span>`; menu.hidden = true; filterBooks(); });
+		search.addEventListener('input', filterBooks);
+		function filterBooks() { const term = search.value.toLowerCase(); let visible = 0; cards.forEach(card => { const matches = `${card.dataset.title} ${card.dataset.author}`.includes(term) && (activeCategory === categories[0] || card.dataset.category === activeCategory); card.hidden = !matches; if (matches) visible++; }); document.querySelector('#empty-state').hidden = visible !== 0; }
+	</script>
+</body>
+</html>
