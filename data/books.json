@@ -30,13 +30,23 @@
     "featured": true
   },
   {
-    "id": 7,
-    "title": "fulanito",
-    "author": "el amor de la vida de mi amor",
-    "category": "historia de amor",
-    "price": 1000000.0,
-    "format": "tapa dura",
-    "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=85",
+    "id": 4,
+    "title": "prueva",
+    "author": "8",
+    "category": "Sol",
+    "price": 16.0,
+    "format": "Tapa blanda",
+    "cover": "",
     "featured": false
+  },
+  {
+    "id": 5,
+    "title": "1",
+    "author": "2",
+    "category": "3",
+    "price": 4.0,
+    "format": "5",
+    "cover": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=85",
+    "featured": true
   }
 ]
