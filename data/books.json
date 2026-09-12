@@ -41,12 +41,22 @@
   },
   {
     "id": 5,
-    "title": "1",
-    "author": "2",
-    "category": "3",
-    "price": 4.0,
-    "format": "5",
-    "cover": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=85",
-    "featured": true
+    "title": "11",
+    "author": "diego",
+    "category": "Sin categoría",
+    "price": 0.0,
+    "format": "Tapa blanda",
+    "cover": "",
+    "featured": false
+  },
+  {
+    "id": 6,
+    "title": "yo",
+    "author": "yo",
+    "category": "yo",
+    "price": 5.555555555555555e+33,
+    "format": "Tapa blanda",
+    "cover": "",
+    "featured": false
   }
 ]

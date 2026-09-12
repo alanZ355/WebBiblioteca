@@ -18,7 +18,7 @@ def admin_panel():
 
 
 @admin_bp.route("/admin/books", methods=["POST"])
-def create_book():
+def create_book_route():
 
     books = load_books()
 
