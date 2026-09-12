@@ -1,9 +1,15 @@
-from flask import Blueprint, redirect, render_template, request, url_for
+from flask import Blueprint, redirect, render_template, request, url_for, session
 
 from services.books import load_books, save_books, next_book_id
 
 
 admin_bp = Blueprint("admin", __name__)
+
+
+@admin_bp.before_request
+def check_admin_auth():
+    if "user_id" not in session:
+        return redirect(url_for("public.home"))
 
 
 @admin_bp.route("/admin", methods=["GET"])
@@ -60,7 +66,7 @@ def create_book_route():
     "/admin/books/<int:book_id>/delete",
     methods=["POST"]
 )
-def delete_book(book_id):
+def delete_book_rute(book_id):
 
     books = load_books()
 

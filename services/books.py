@@ -60,8 +60,8 @@ def validate_book_data(title, author, price):
     if not math.isfinite(price):
         return "El precio debe ser un número válido."
 
-    if price < 0:
-        return "El precio no puede ser negativo."
+    if price <= 0:
+        return "El precio debe ser mayor a Cero."
 
     return None
 

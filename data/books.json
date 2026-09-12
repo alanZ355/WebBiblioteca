@@ -38,25 +38,5 @@
     "format": "Tapa blanda",
     "cover": "",
     "featured": false
-  },
-  {
-    "id": 5,
-    "title": "11",
-    "author": "diego",
-    "category": "Sin categoría",
-    "price": 0.0,
-    "format": "Tapa blanda",
-    "cover": "",
-    "featured": false
-  },
-  {
-    "id": 6,
-    "title": "yo",
-    "author": "yo",
-    "category": "yo",
-    "price": 5.555555555555555e+33,
-    "format": "Tapa blanda",
-    "cover": "",
-    "featured": false
   }
 ]

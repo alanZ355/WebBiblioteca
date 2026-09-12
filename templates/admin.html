@@ -75,7 +75,7 @@
 						<!-- Cada libro tiene su propio formulario de borrado
 						     (un botón por fila) que llama a
 						     /admin/books/<id>/delete por POST. -->
-						<form action="{{ url_for('admin.delete_book', book_id=book.id) }}" method="post" onsubmit="return confirm('¿Borrar «' + {{ book.title|tojson }} + '»?');">
+						<form action="{{ url_for('admin.delete_book_rute', book_id=book.id) }}" method="post" onsubmit="return confirm('¿Borrar «' + {{ book.title|tojson }} + '»?');">
 							<button class="admin-delete" type="submit">Borrar</button>
 						</form>
 					</td>
