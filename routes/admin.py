@@ -66,7 +66,7 @@ def create_book_route():
     "/admin/books/<int:book_id>/delete",
     methods=["POST"]
 )
-def delete_book_rute(book_id):
+def delete_book_route(book_id):
 
     books = load_books()
 

@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, url_for, session
+from werkzeug.security import check_password_hash
+from config import ADMIN_USERNAME, ADMIN_PASSWORD_HASH
 
 
 auth_bp = Blueprint("auth", __name__)
@@ -12,13 +14,25 @@ def login_route():
     username = request.form.get("username", "").strip()
     password = request.form.get("password", "")
 
-    # Por ahora solamente mostramos qué recibimos.
-    # La autenticación real la agregaremos después.
-    print("Usuario:", username)
-    print("Contraseña:", password)
-    session["user_id"] = username
+    # Comprobamos que el usuario y la contraseña sean correctos.
+    if (
+        username == ADMIN_USERNAME
+        and ADMIN_PASSWORD_HASH
+        and check_password_hash(
+            ADMIN_PASSWORD_HASH,
+            password
+        )
+    ):
+        # Guardamos el usuario en la sesión.
+        session["user_id"] = username
+        return redirect(url_for("admin.admin_panel"))
     
-    return redirect(url_for("admin.admin_panel"))
+    # Si las credenciales son incorrectas,
+    # volvemos al login mostrando un mensaje.
+    return render_template(
+        "login.html",
+        error="Usuario o contraseña incorrectos."
+    )
 
 
 @auth_bp.route("/logout", methods=["POST"])
