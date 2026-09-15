@@ -12,6 +12,9 @@
 		<a class="brand" href="/" aria-label="Verso, inicio"><span>V</span>erso</a>
 		<nav class="main-nav" aria-label="Navegación principal">
 			<a href="/">Ver sitio</a>
+			<form action="{{ url_for('auth.logout_route') }}" method="post">
+				<button type="submit">Cerrar sesión</button>
+			</form>
 		</nav>
 	</header>
 
@@ -72,9 +75,7 @@
 					<td>{{ book.category }}</td>
 					<td>${{ '%.2f'|format(book.price) }}</td>
 					<td>
-						<!-- Cada libro tiene su propio formulario de borrado
-						     (un botón por fila) que llama a
-						     /admin/books/<id>/delete por POST. -->
+						<!-- Cada libro tiene su propio formulario de borrado (un botón por fila) que llama a /admin/books/<id>/delete por POST. -->
 						<form action="{{ url_for('admin.delete_book_route', book_id=book.id) }}" method="post" onsubmit="return confirm('¿Borrar «' + {{ book.title|tojson }} + '»?');">
 							<button class="admin-delete" type="submit">Borrar</button>
 						</form>

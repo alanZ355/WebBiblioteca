@@ -23,6 +23,8 @@ button { border: 0; cursor: pointer; }
 .main-nav { display: flex; gap: 34px; margin-left: 115px; }
 .main-nav a { color: var(--muted); font-size: 13px; }
 .main-nav a:hover { color: var(--ink); }
+.main-nav form { color: var(--muted); font-size: 13px; }
+.main-nav form:hover { color: var(--ink); }
 .cart-button { background: transparent; color: var(--ink); font-size: 13px; padding: 8px 0; }
 .cart-button b { background: var(--ink); border-radius: 50%; color: white; display: inline-grid; font-size: 10px; height: 18px; margin-left: 7px; place-items: center; width: 18px; }
 .bag-icon { font-size: 22px; vertical-align: -2px; }

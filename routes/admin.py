@@ -1,6 +1,6 @@
 from flask import Blueprint, redirect, render_template, request, url_for, session
 
-from services.books import load_books, save_books, next_book_id
+from services.books import load_books, save_books, create_book
 
 
 admin_bp = Blueprint("admin", __name__)
@@ -44,17 +44,19 @@ def create_book_route():
     except ValueError:
         return redirect(url_for("admin.admin_panel"))
 
-    new_book = {
-        "id": next_book_id(books),
-        "title": title,
-        "author": author,
-        "category": category or "Sin categoría",
-        "price": price,
-        "format": book_format or "Tapa blanda",
-        "cover": cover,
-        "featured": featured,
-    }
-
+    new_book, error = create_book(
+        books,
+        title,
+        author,
+        category,
+        price,
+        book_format,
+        cover,
+        featured
+    )
+    if error:
+        return redirect(url_for("admin.admin_panel"))
+    
     books.append(new_book)
 
     save_books(books)

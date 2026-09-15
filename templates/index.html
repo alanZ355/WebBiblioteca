@@ -17,7 +17,9 @@
 			<a href="#recomendados">Recomendados</a>
 			<a href="#nosotros">La librería</a>
 			<!-- Enlace nuevo al panel de administración, para agregar libros sin tocar código -->
-			<a href="{{ url_for('admin.admin_panel') }}">Admin</a>
+			{% if session.get("user_id") %}
+				<a href="{{ url_for('admin.admin_panel') }}">Admin</a>
+			{% endif %}
 		</nav>
 		<button class="cart-button" id="cart-button" type="button" aria-label="Abrir carrito">
 			<span class="bag-icon">◌</span> Carrito <b id="cart-count">0</b>

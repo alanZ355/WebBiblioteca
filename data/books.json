@@ -38,5 +38,15 @@
     "format": "Tapa blanda",
     "cover": "",
     "featured": false
+  },
+  {
+    "id": 5,
+    "title": "el amor de mi vida",
+    "author": "Dios",
+    "category": "Romance",
+    "price": 70226.0,
+    "format": "blanda",
+    "cover": "",
+    "featured": true
   }
 ]
