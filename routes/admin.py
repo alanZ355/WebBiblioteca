@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, url_for, session
 
 from services.books import load_books, save_books, create_book
-
+from services.images import save_book_cover
 
 admin_bp = Blueprint("admin", __name__)
 
@@ -33,7 +33,7 @@ def create_book_route():
     category = request.form.get("category", "").strip()
     price_raw = request.form.get("price", "").strip()
     book_format = request.form.get("format", "").strip()
-    cover = request.form.get("cover", "").strip()
+    cover = request.files.get("cover")
     featured = request.form.get("featured") == "on"
 
     if not title or not author or not price_raw:
@@ -51,12 +51,19 @@ def create_book_route():
         category,
         price,
         book_format,
-        cover,
+        None,
         featured
     )
     if error:
         return redirect(url_for("admin.admin_panel"))
     
+    cover_path = save_book_cover(
+        cover,
+        new_book["id"]
+    )
+    
+    new_book["cover"] = cover_path
+
     books.append(new_book)
 
     save_books(books)

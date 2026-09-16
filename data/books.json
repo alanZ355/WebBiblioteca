@@ -48,5 +48,35 @@
     "format": "blanda",
     "cover": "",
     "featured": true
+  },
+  {
+    "id": 6,
+    "title": "prueba de subir archivo",
+    "author": "yo",
+    "category": "pva",
+    "price": 10000.0,
+    "format": "dura",
+    "cover": "images/books/book_6_cover.jpeg",
+    "featured": false
+  },
+  {
+    "id": 7,
+    "title": "1",
+    "author": "2",
+    "category": "3",
+    "price": 4.0,
+    "format": "Tapa blanda",
+    "cover": "images/books/book_7_cover.webp",
+    "featured": false
+  },
+  {
+    "id": 8,
+    "title": "5",
+    "author": "6",
+    "category": "7",
+    "price": 8.0,
+    "format": "Tapa blanda",
+    "cover": null,
+    "featured": false
   }
 ]

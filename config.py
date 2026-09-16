@@ -9,6 +9,15 @@ BASE_DIR = Path(__file__).parent
 
 BOOKS_FILE = BASE_DIR / "data" / "books.json"
 
+UPLOAD_FOLDER = BASE_DIR / "static" / "images" / "books"
+
+ALLOWED_IMAGE_EXTENSIONS = {
+    "png",
+    "jpg",
+    "jpeg",
+    "webp"
+}
+
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME")

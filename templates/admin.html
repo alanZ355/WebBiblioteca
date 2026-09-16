@@ -25,7 +25,12 @@
 		<!-- Formulario para cargar un libro nuevo. Al enviarse, hace un POST
 		     a /admin/books, que es la ruta en app.py que procesa estos datos
 		     y los agrega al archivo JSON. -->
-		<form class="admin-form" action="{{ url_for('admin.create_book_route') }}" method="post">
+		<form
+			class="admin-form"
+			action="{{ url_for('admin.create_book_route') }}"
+			method="post"
+			enctype="multipart/form-data"
+		>
 			<div class="admin-field">
 				<label for="title">Título *</label>
 				<input type="text" id="title" name="title" required>
@@ -47,8 +52,8 @@
 				<input type="text" id="format" name="format" placeholder="Ej: Tapa blanda, Tapa dura">
 			</div>
 			<div class="admin-field admin-field-wide">
-				<label for="cover">URL de portada</label>
-				<input type="url" id="cover" name="cover" placeholder="https://...">
+				<label for="cover">Portada</label>
+				<input type="file" id="cover" name="cover" accept=".jpg,.jpeg,.png,.webp">
 			</div>
 			<div class="admin-field admin-checkbox">
 				<label><input type="checkbox" name="featured"> Marcar como "Selección Verso"</label>
