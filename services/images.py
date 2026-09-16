@@ -18,7 +18,7 @@ def allowed_image(filename):
 
     return extension in ALLOWED_IMAGE_EXTENSIONS
 
-def save_book_cover(image, book_id):
+def save_book_image(image, book_id, image_type):
     """
     Guarda la portada de un libro.
 
@@ -35,7 +35,7 @@ def save_book_cover(image, book_id):
 
     extension = Path(image.filename).suffix.lower()
 
-    filename = f"book_{book_id}_cover{extension}"
+    filename = f"book_{book_id}_{image_type}{extension}"
 
     filename = secure_filename(filename)
 

@@ -8,5 +8,50 @@
     "format": "Tapa blanda",
     "cover": "images/books/book_7_cover.webp",
     "featured": false
+  },
+  {
+    "id": 8,
+    "title": "5",
+    "author": "6",
+    "category": "7",
+    "price": 8.0,
+    "format": "9",
+    "cover": "images/books/book_8_cover.png",
+    "featured": false
+  },
+  {
+    "id": 9,
+    "title": "a",
+    "author": "b",
+    "category": "c",
+    "price": 1.0,
+    "format": "d",
+    "cover": "images/books/book_9_cover.jpeg",
+    "featured": false,
+    "back_cover": "images/books/book_9_back_cover.jpeg"
+  },
+  {
+    "id": 10,
+    "title": "no se mi amor",
+    "author": "alan agustin",
+    "category": "romance",
+    "price": 2000000.0,
+    "format": "tapa dura",
+    "cover": null,
+    "featured": false,
+    "description": "ahi vos tenes que contar como es el libro mi amor, te voy a morder el pipi, ALAN AGUSTIIIN",
+    "back_cover": null
+  },
+  {
+    "id": 11,
+    "title": "yo",
+    "author": "yo",
+    "category": "yo",
+    "price": 70.0,
+    "format": "yo",
+    "cover": null,
+    "featured": false,
+    "description": "Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol Te Amo Sol",
+    "back_cover": null
   }
 ]

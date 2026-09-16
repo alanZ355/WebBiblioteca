@@ -74,7 +74,8 @@ def create_book(
     price,
     book_format,
     cover,
-    featured
+    featured,
+    description
 ):
     """
     Valida y crea un nuevo libro.
@@ -102,6 +103,7 @@ def create_book(
         "format": book_format or "Tapa blanda",
         "cover": cover,
         "featured": featured,
+        "description": description or ""
     }
 
     return new_book, None

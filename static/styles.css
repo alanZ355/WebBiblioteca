@@ -65,6 +65,18 @@ h2 { font-size: clamp(36px, 4vw, 55px); }
 .book-category { color: var(--orange); font-size: 10px; font-weight: 700; letter-spacing: 1.3px; margin: 0 0 8px; text-transform: uppercase; }
 .book-info h3 { font-family: 'Playfair Display', serif; font-size: 22px; font-weight: 600; margin: 0 0 6px; }
 .author { color: var(--muted); font-size: 12px; margin: 0; }
+.book-description {
+    margin: 0.8rem 0 1rem;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #555;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+	line-clamp: 4;
+    overflow: hidden;
+}
 .book-bottom { align-items: center; display: flex; justify-content: space-between; margin-top: 15px; }
 .price { font-size: 13px; font-weight: 700; }
 .add-button { background: var(--ink); border-radius: 50%; color: white; font-size: 21px; height: 31px; line-height: 20px; width: 31px; }

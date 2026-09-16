@@ -53,9 +53,31 @@
 				<label for="format">Formato</label>
 				<input type="text" id="format" name="format" placeholder="Ej: Tapa blanda, Tapa dura">
 			</div>
+			<div class="admin-field">
+				<label for="description">Descripción</label>
+				<textarea
+					id="description"
+					name="description"
+					rows="5"
+					placeholder="Descripción del libro..."
+				></textarea>
+			</div>
 			<div class="admin-field admin-field-wide">
 				<label for="cover">Portada</label>
-				<input type="file" id="cover" name="cover" accept=".jpg,.jpeg,.png,.webp">
+				<input
+					type="file"
+					id="cover"
+					name="cover"
+					accept=".jpg,.jpeg,.png,.webp"
+				>
+
+				<label for="back_cover">Contraportada</label>
+				<input
+					type="file"
+					id="back_cover"
+					name="back_cover"
+					accept=".jpg,.jpeg,.png,.webp"
+				>
 			</div>
 			<div class="admin-field admin-checkbox">
 				<label><input type="checkbox" name="featured"> Marcar como "Selección Verso"</label>
@@ -67,6 +89,8 @@
 		<table class="admin-table">
 			<thead>
 				<tr>
+					<th>Portada</th>
+					<th>Contraportada</th>
 					<th>Título</th>
 					<th>Autor</th>
 					<th>Categoría</th>
@@ -82,10 +106,23 @@
 							<img
 								src="{{ url_for('static', filename=book.cover) }}"
 								alt="Portada de {{ book.title }}"
+								loading="lazy"
 								class="admin-book-cover"
 							>
 						{% else %}
 							<span class="admin-book-no-cover">Sin Portada</span>
+						{% endif %}
+					</td>
+					<td>
+						{% if book.back_cover %}
+							<img
+								src="{{ url_for('static', filename=book.back_cover) }}"
+								alt="Contraportada de {{ book.title }}"
+								loading="lazy"
+								class="admin-book-cover"
+							>
+						{% else %}
+							<span class="admin-book-no-cover">Sin Contraportada</span>
 						{% endif %}
 					</td>
 					<td>{{ book.title }}</td>

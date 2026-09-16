@@ -74,6 +74,9 @@
 						<p class="book-category">{{ book.category }}</p>
 						<h3>{{ book.title }}</h3>
 						<p class="author">{{ book.author }}</p>
+						{% if book.description %}
+							<p class="book-description">{{ book.description }}</p>
+						{% endif %}
 						<div class="book-bottom"><span class="price">${{ '%.2f'|format(book.price) }}</span><button class="add-button" type="button" data-id="{{ book.id }}" aria-label="Añadir {{ book.title }} al carrito">+</button></div>
 					</div>
 				</article>
