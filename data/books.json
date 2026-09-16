@@ -1,65 +1,5 @@
 [
   {
-    "id": 1,
-    "title": "La sombra del viento",
-    "author": "Carlos Ruiz Zafón",
-    "category": "Novela",
-    "price": 18.9,
-    "format": "Tapa blanda",
-    "cover": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=600&q=85",
-    "featured": true
-  },
-  {
-    "id": 2,
-    "title": "Hábitos atómicos",
-    "author": "James Clear",
-    "category": "Crecimiento",
-    "price": 21.5,
-    "format": "Tapa dura",
-    "cover": "https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=600&q=85",
-    "featured": true
-  },
-  {
-    "id": 3,
-    "title": "El infinito en un junco",
-    "author": "Irene Vallejo",
-    "category": "Historia",
-    "price": 24.0,
-    "format": "Tapa blanda",
-    "cover": "https://images.unsplash.com/photo-1511108690759-009324a90311?auto=format&fit=crop&w=600&q=85",
-    "featured": true
-  },
-  {
-    "id": 4,
-    "title": "prueBa",
-    "author": "8",
-    "category": "Sol",
-    "price": 16.0,
-    "format": "Tapa blanda",
-    "cover": "",
-    "featured": false
-  },
-  {
-    "id": 5,
-    "title": "el amor de mi vida",
-    "author": "Dios",
-    "category": "Romance",
-    "price": 70226.0,
-    "format": "blanda",
-    "cover": "",
-    "featured": true
-  },
-  {
-    "id": 6,
-    "title": "prueba de subir archivo",
-    "author": "yo",
-    "category": "pva",
-    "price": 10000.0,
-    "format": "dura",
-    "cover": "images/books/book_6_cover.jpeg",
-    "featured": false
-  },
-  {
     "id": 7,
     "title": "1",
     "author": "2",
@@ -67,16 +7,6 @@
     "price": 4.0,
     "format": "Tapa blanda",
     "cover": "images/books/book_7_cover.webp",
-    "featured": false
-  },
-  {
-    "id": 8,
-    "title": "5",
-    "author": "6",
-    "category": "7",
-    "price": 8.0,
-    "format": "Tapa blanda",
-    "cover": null,
     "featured": false
   }
 ]
